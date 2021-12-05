@@ -8,10 +8,6 @@ variable "TFC_WORKSPACE_NAME" {
 }
 
 locals {
-  workspace = var.TFC_WORKSPACE_NAME != "" ? var.TFC_WORKSPACE_NAME : terraform.workspace
-}
-
-locals {
 	web_instance_type_map = {
 		stage = "t2.micro"
 		prod = "t2.large"
@@ -24,6 +20,8 @@ locals {
 		"t3.micro" = data.aws_ami.myUbuntu.id
 		"t3.large" = data.aws_ami.myUbuntu.id
 	}
+
+	workspace = var.TFC_WORKSPACE_NAME != "" ? var.TFC_WORKSPACE_NAME : terraform.workspace
 }
 
 data "aws_ami" "myUbuntu" {
@@ -44,9 +42,9 @@ data "aws_ami" "myUbuntu" {
 
 resource "aws_instance" "myInstance" {
 	ami           = data.aws_ami.myUbuntu.id
-	instance_type = local.web_instance_type_map[terraform.workspace]
+	instance_type = local.web_instance_type_map[local.workspace]
 	availability_zone = "us-west-2a"
-	count = local.web_instance_count_map[terraform.workspace]
+	count = local.web_instance_count_map[local.workspace]
 	lifecycle {
 		create_before_destroy = true
 	}
