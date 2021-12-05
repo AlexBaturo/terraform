@@ -2,6 +2,15 @@ provider "aws" {
 	region  = "us-west-2"
 }
 
+variable "TFC_WORKSPACE_NAME" {
+  type = string
+  default = ""
+}
+
+locals {
+  workspace = var.TFC_WORKSPACE_NAME != "" ? var.TFC_WORKSPACE_NAME : terraform.workspace
+}
+
 locals {
 	web_instance_type_map = {
 		stage = "t2.micro"
