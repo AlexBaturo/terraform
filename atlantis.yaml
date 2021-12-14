@@ -3,16 +3,16 @@ automerge: true
 delete_source_branch_on_merge: true
 projects:
 - name: instance1
-    dir: .
-    workspace: stage
-    autoplan:
-      when_modified: ["*.tf"]
-      enabled: true
-    workflow: default
+  dir: .
+  workspace: stage
+  autoplan:
+    when_modified: ["*.tf"]
+    enabled: true
+  workflow: default
 - name: instance2
-    dir: .
-    workspace: prod
-    autoplan:
-      when_modified: ["*.tf"]
-      enabled: true
-    workflow: default
+  dir: .
+  workspace: prod
+  autoplan:
+    when_modified: ["*.tf"]
+    enabled: true
+  workflow: default
