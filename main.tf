@@ -50,7 +50,7 @@ resource "aws_instance" "myInstance" {
 	}
 
 	tags = {
-		Name = "HelloWorld"
+		Name = "HelloWorldaaaa"
 	}
 }
 
