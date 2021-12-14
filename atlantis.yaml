@@ -6,13 +6,13 @@ projects:
   dir: .
   workspace: stage
   autoplan:
-    when_modified: ["*.tf"]
+    when_modified: ["*.tf", "../modules/**.tf"]
     enabled: true
   workflow: default
 - name: instance2
   dir: .
   workspace: prod
   autoplan:
-    when_modified: ["*.tf"]
+    when_modified: ["*.tf", "../modules/**.tf"]
     enabled: true
   workflow: default
